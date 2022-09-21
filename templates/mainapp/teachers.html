@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        div.line{
+            box-sizing: border-box;
+            height: 2px;
+            background-color: red;
+            border: 1px solid red;
+            width: 100%;
+        }
+        .card{
+            width: 50%;
+            border: 1px solid green;
+            height: 150px;
+            margin-left: 10px;
+            margin-top: 20px;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+        .lesson_name{
+            border: 1px solid red;
+            margin-left: 2px;
+            padding: 0 2px;
+        }
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .lessons{
+            margin-bottom: 10px;
+        }
+    </style>
+    <h1>Teache list:</h1>
+    
+        {% for teacher in teachers %}
+        <div class="card">
+            <h5 class="name">   
+                Teacher name: {{teacher.name}}
+            </h5> 
+            <h5 class="id">
+                Teacher ID: <strong>{{teacher.id}}</strong>
+            </h5>
+            <h5 class="school_name">
+                Teacher school name: {{teacher.school.name}}
+            </h5>
+            <h5 class="class_name">
+                Teacher class name: {{teacher.clas.name}}
+            </h5>
+            <h5 class="lessons">Class lessons:</h5>
+            {% for lesson in teacher.clas.lessons.all %}
+                <span class="lesson_name">
+                    {{lesson.name}}
+                </span>
+                
+            {% endfor %} 
+        </div>
+        {% endfor %}
+    
+
+</body>
+</html>
