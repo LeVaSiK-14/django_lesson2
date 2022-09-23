@@ -10,10 +10,15 @@
     <h1>Schools</h1>
 
     {% for school in schools %}
-        <span>{{school.id}} - {{school.name}} - {{school.director.name}}</span><br><br>
+        <span>{{school.id}} - {{school.name}} - {{school.director.name}}</span>
+        <a href="{% url 'retrieve_school' school.id %}">Посмотреть подробно</a>
+        <a href="{% url 'update_school' school.id %}">Изменить</a>
+        <a href="{% url 'delete_school' school.id %}">Удалить</a><br><br>
     {% endfor %}
 
     <h3>School amount: {{school_amount}}</h3>
+
+    <a href="{% url 'create_school' %}">Добавить школу</a>
 
 
 
